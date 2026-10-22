@@ -1,56 +1,61 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220">
 
-  <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00A3FF"/>
-      <stop offset="100%" stop-color="#00E5FF"/>
-    </linearGradient>
-  </defs>
+    <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00A3FF"/>
+            <stop offset="100%" stop-color="#00E5FF"/>
+        </linearGradient>
+    </defs>
 
-  <!-- Icono moderno -->
+    <!-- Símbolo minimalista -->
 
-  <g transform="translate(20,20)">
+    <g transform="translate(20,35)">
 
-    <path
-      d="M40 90
-         C40 40, 100 40, 120 90
-         C140 140, 200 140, 200 90"
-      fill="none"
-      stroke="url(#grad)"
-      stroke-width="18"
-      stroke-linecap="round"/>
+        <path
+            d="M30 75
+               C30 35 70 15 110 15
+               L110 35
+               C80 35 55 50 55 75
+               C55 100 80 115 110 115
+               L110 135
+               C70 135 30 115 30 75Z"
+            fill="url(#grad)"
+        />
 
-    <path
-      d="M40 130
-         C40 180, 100 180, 120 130
-         C140 80, 200 80, 200 130"
-      fill="none"
-      stroke="#FFFFFF"
-      stroke-width="18"
-      stroke-linecap="round"/>
+        <rect
+            x="95"
+            y="35"
+            width="14"
+            height="80"
+            fill="#ffffff"
+        />
 
-  </g>
+    </g>
 
-  <!-- Marca -->
+    <!-- Nombre -->
 
-  <text
-    x="270"
-    y="95"
-    fill="#FFFFFF"
-    font-size="58"
-    font-family="Inter,Arial,sans-serif"
-    font-weight="800">
-    DFP TECH FL
-  </text>
+    <text
+        x="180"
+        y="95"
+        fill="#ffffff"
+        font-size="58"
+        font-family="Orbitron, Eurostile, Arial, sans-serif"
+        font-weight="700"
+        letter-spacing="2">
+        DFP TECH FL
+    </text>
 
-  <text
-    x="270"
-    y="140"
-    fill="#00E5FF"
-    font-size="20"
-    font-family="Inter,Arial,sans-serif"
-    letter-spacing="5">
-    DIGITAL SOLUTIONS
-  </text>
+    <!-- Subtitulo -->
+
+    <text
+        x="183"
+        y="140"
+        fill="#00E5FF"
+        font-size="18"
+        font-family="Orbitron, Eurostile, Arial, sans-serif"
+        letter-spacing="8">
+        DIGITAL SOLUTIONS
+    </text>
 
 </svg>
+``
