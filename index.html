@@ -819,7 +819,8 @@
         company: String(formData.get("company") || "").trim(),
         message: String(formData.get("message") || "").trim(),
         _subject: t.mailSubject,
-        _template: "table"
+        _template: "table",
+        _url: window.location.href
       };
 
       status.textContent = t.formSending;
@@ -837,15 +838,16 @@
         });
 
         const result = await response.json();
-        if (!response.ok || result.success === false || result.success === "false") {
-          throw new Error(result.message || "Form submission failed");
+        if (!response.ok || String(result.success) !== "true") {
+          throw new Error(result.message || `FormSubmit respondió con HTTP ${response.status}`);
         }
 
         status.textContent = t.formSuccess;
         form.reset();
       } catch (error) {
         console.error("Contact form submission failed:", error);
-        status.textContent = t.formError;
+        const detail = error && error.message ? error.message : "Error de conexión";
+        status.textContent = `${t.formError} (${detail})`;
       } finally {
         submitButton.disabled = false;
         submitButton.removeAttribute("aria-busy");
