@@ -85,12 +85,18 @@
     }
     .menu a:hover, .menu a:focus-visible { color: var(--secondary); }
     .menu .nav-cta {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
       background: linear-gradient(110deg, var(--primary), var(--secondary));
       color: #06142c;
-      padding: 10px 16px;
+      padding: 8px 13px;
       border-radius: 10px;
+      white-space: nowrap;
     }
     .menu .nav-cta:hover { color: #fff; }
+    .menu .nav-email { font-size: .72rem; font-weight: 600; line-height: 1.25; }
     .language-switch {
       display: inline-flex;
       align-items: center;
@@ -434,7 +440,7 @@
         <button class="language-switch" id="language-switch" type="button" aria-label="Switch to English" title="Switch language"><span aria-hidden="true">🌐</span><span id="language-label">EN</span></button>
         <a href="#servicios" data-i18n="navServices">Servicios</a>
         <a href="#nosotros" data-i18n="navAbout">Nosotros</a>
-        <a class="nav-cta" href="#contacto" data-i18n="navContact">Contacto</a>
+        <a class="nav-cta" href="#contacto"><span data-i18n="navContact">Contacto</span><span class="nav-email" data-i18n="navEmail">contacto@dfptechfl.com</span></a>
       </nav>
     </div>
   </header>
@@ -628,7 +634,7 @@
   <script>
     const translations = {
       es: {
-        navHome:"Inicio", navServices:"Servicios", navAbout:"Nosotros", navContact:"Contacto",
+        navHome:"Inicio", navServices:"Servicios", navAbout:"Nosotros", navContact:"Contacto", navEmail:"contacto@dfptechfl.com",
         heroEyebrow:"Microsoft 365 · Diseño web · Transformación digital",
         heroTitleStart:"Impulsamos su negocio con", heroTitleAccent:"soluciones digitales innovadoras",
         heroCopy:"Ayudamos a las empresas a trabajar de forma más eficiente mediante Microsoft 365, SharePoint Online, Power Platform, desarrollo web, seguridad empresarial y migraciones a la nube.",
@@ -673,14 +679,14 @@
         menuOpen:"Abrir menú", menuClose:"Cerrar menú", navAria:"Navegación principal",
         formMissingEmail:"No se pudo configurar el envío. Inténtalo más tarde.",
         formSending:"Enviando mensaje...",
-        formSuccess:"¡Gracias! Tu mensaje se envió correctamente. Nos pondremos en contacto contigo pronto.",
+        formSuccess:"¡Gracias! Tu mensaje se envió correctamente. Nos pondremos en contacto contigo desde la siguiente dirección de correo: contact@dfptechfl.com.",
         formError:"No se pudo enviar el mensaje. Inténtalo de nuevo en unos minutos o escríbenos directamente a contacto@dfptechfl.com.",
         mailSubject:"Consulta desde la página web de DFP Tech FL",
         mailName:"Nombre", mailEmail:"Correo", mailCompany:"Empresa", mailNotSpecified:"No indicada",
         mailMessage:"Proyecto o consulta"
       },
       en: {
-        navHome:"Home", navServices:"Services", navAbout:"About", navContact:"Contact",
+        navHome:"Home", navServices:"Services", navAbout:"About", navContact:"Contact", navEmail:"contact@dfptechfl.com",
         heroEyebrow:"Microsoft 365 · Web Design · Digital Transformation",
         heroTitleStart:"We empower your business with", heroTitleAccent:"innovative digital solutions",
         heroCopy:"We help businesses work more efficiently through Microsoft 365, SharePoint Online, Power Platform, web development, business security, and cloud migrations.",
@@ -725,7 +731,7 @@
         menuOpen:"Open menu", menuClose:"Close menu", navAria:"Main navigation",
         formMissingEmail:"Message delivery is not configured. Please try again later.",
         formSending:"Sending your message...",
-        formSuccess:"Thank you! Your message was sent successfully. We will get back to you soon.",
+        formSuccess:"Thank you! Your message was sent successfully. We will contact you from the following email address: contact@dfptechfl.com.",
         formError:"We could not send your message. Please try again in a few minutes or email contacto@dfptechfl.com directly.",
         mailSubject:"Inquiry from the DFP Tech FL website",
         mailName:"Name", mailEmail:"Email", mailCompany:"Company", mailNotSpecified:"Not provided",
