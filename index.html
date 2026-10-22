@@ -1,610 +1,677 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>DFP Tech FL | Microsoft 365, Diseño Web y Transformación Digital</title>
-
-<meta name="description" content="Microsoft 365, SharePoint, Power Platform, Diseño Web, Seguridad Empresarial y Transformación Digital.">
-
-<link rel="icon" type="image/png" href="Logo.png">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-
-:root{
-    --primary:#00A3FF;
-    --secondary:#00E5FF;
-    --accent:#7B61FF;
-    --dark:#060B18;
-    --glass:rgba(255,255,255,.06);
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:'Inter',sans-serif;
-    background:var(--dark);
-    color:white;
-    overflow-x:hidden;
-}
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:-1;
-
-    background:
-    radial-gradient(circle at top left,
-    rgba(0,163,255,.18),
-    transparent 35%),
-
-    radial-gradient(circle at bottom right,
-    rgba(123,97,255,.18),
-    transparent 40%);
-}
-
-.container{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
-}
-
-/* NAVBAR */
-
-nav{
-    position:fixed;
-    top:0;
-    width:100%;
-    z-index:999;
-
-    background:linear-gradient(
-        90deg,
-        #00A3FF,
-        #00E5FF
-    );
-
-    border-bottom:1px solid rgba(255,255,255,.15);
-
-    box-shadow:0 2px 20px rgba(0,163,255,.25);
-}
-
-.navbar{
-    height:85px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.logo img{
-    height:60px;
-    width:auto;
-    transition:.3s ease;
-
-    filter:
-    drop-shadow(0 0 4px rgba(255,255,255,.35))
-    drop-shadow(0 0 8px rgba(0,163,255,.35));
-}
-
-.logo img:hover{
-    transform:scale(1.05);
-}
-
-.menu{
-    display:flex;
-    gap:30px;
-}
-
-.menu a{
-    text-decoration:none;
-    color:#081426;
-    font-weight:700;
-    transition:.3s;
-}
-
-.menu a:hover{
-    color:white;
-}
-
-/* HERO */
-
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    padding-top:100px;
-}
-
-.hero-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:60px;
-    align-items:center;
-}
-
-.badge{
-    display:inline-block;
-
-    padding:10px 18px;
-
-    border-radius:999px;
-
-    border:1px solid rgba(0,229,255,.3);
-
-    background:rgba(0,229,255,.15);
-
-    color:#8be6ff;
-
-    margin-bottom:20px;
-}
-
-.hero h1{
-    font-size:4rem;
-    line-height:1.1;
-    margin-bottom:20px;
-}
-
-.gradient{
-    background:linear-gradient(
-    90deg,
-    var(--primary),
-    var(--secondary),
-    var(--accent));
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.hero p{
-    color:#c4d1e3;
-    line-height:1.8;
-    font-size:1.1rem;
-    margin-bottom:30px;
-}
-
-.buttons{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
-}
-
-.btn{
-    padding:15px 25px;
-    border-radius:12px;
-    text-decoration:none;
-    font-weight:700;
-    transition:.3s;
-}
-
-.btn:hover{
-    transform:translateY(-4px);
-}
-
-.primary{
-    background:linear-gradient(
-        90deg,
-        var(--primary),
-        var(--secondary)
-    );
-    color:white;
-}
-
-.outline{
-    border:1px solid rgba(255,255,255,.2);
-    color:white;
-}
-
-/* CARD */
-
-.hero-card{
-    background:var(--glass);
-
-    backdrop-filter:blur(20px);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:25px;
-
-    padding:35px;
-
-    animation:float 6s ease-in-out infinite;
-}
-
-.hero-card h3{
-    color:var(--secondary);
-    margin-bottom:20px;
-}
-
-.hero-card ul{
-    list-style:none;
-}
-
-.hero-card li{
-    padding:12px 0;
-    border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-@keyframes float{
-    0%{transform:translateY(0);}
-    50%{transform:translateY(-12px);}
-    100%{transform:translateY(0);}
-}
-
-/* SECTIONS */
-
-section{
-    padding:100px 0;
-}
-
-.section-title{
-    text-align:center;
-    font-size:2.8rem;
-    margin-bottom:15px;
-}
-
-.section-subtitle{
-    text-align:center;
-    color:#a9b4c9;
-    margin-bottom:60px;
-}
-
-.services{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
-}
-
-.card{
-    background:var(--glass);
-
-    border-radius:20px;
-
-    padding:30px;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-8px);
-
-    box-shadow:0 0 25px rgba(0,163,255,.3);
-}
-
-.card h3{
-    color:var(--secondary);
-    margin-bottom:15px;
-}
-
-.card p{
-    color:#c9d3e1;
-    line-height:1.7;
-}
-
-/* STATS */
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-}
-
-.stat{
-    background:var(--glass);
-    border-radius:20px;
-    padding:30px;
-    text-align:center;
-}
-
-.number{
-    color:var(--secondary);
-    font-size:3rem;
-    font-weight:800;
-}
-
-/* CONTACT */
-
-.contact{
-    max-width:800px;
-    margin:auto;
-}
-
-input,
-textarea{
-    width:100%;
-    padding:15px;
-    margin-bottom:15px;
-
-    background:#121c33;
-
-    border:none;
-
-    border-radius:10px;
-
-    color:white;
-}
-
-textarea{
-    min-height:160px;
-}
-
-button{
-    border:none;
-    cursor:pointer;
-}
-
-/* ANIMACIONES */
-
-.reveal{
-    opacity:0;
-    transform:translateY(40px);
-    transition:.8s;
-}
-
-.reveal.active{
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* FOOTER */
-
-footer{
-    padding:40px;
-    text-align:center;
-    color:#8ea0be;
-    border-top:1px solid rgba(255,255,255,.08);
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-    .hero-grid{
-        grid-template-columns:1fr;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07142e">
+  <title>DFP Tech FL | Microsoft 365, Diseño Web y Transformación Digital</title>
+  <meta name="description" content="DFP Tech FL ofrece soluciones empresariales en Microsoft 365, SharePoint Online, Power Platform, diseño web, seguridad y migraciones a la nube.">
+  <link rel="icon" type="image/png" href="Logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0875e1;
+      --primary-light: #1597ff;
+      --secondary: #38c8f5;
+      --accent: #7b61ff;
+      --dark: #07142e;
+      --dark-2: #0b1d3b;
+      --glass: rgba(255,255,255,.055);
+      --text: #f5f8ff;
+      --muted: #b8c6dc;
+      --border: rgba(180,205,240,.15);
+      --container: 1180px;
     }
 
-    .hero h1{
-        font-size:2.7rem;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(8,117,225,.20), transparent 34%),
+        radial-gradient(circle at 92% 52%, rgba(56,200,245,.10), transparent 32%),
+        radial-gradient(circle at 50% 100%, rgba(123,97,255,.10), transparent 38%);
+    }
+    a { color: inherit; }
+    .container { width: min(90%, var(--container)); margin-inline: auto; }
+
+    /* Navegación */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 1000;
+      background: rgba(5,17,40,.92);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+    }
+    .navbar {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .logo { display: inline-flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+    .logo img {
+      display: block;
+      width: auto;
+      height: 58px;
+      max-width: min(340px, 38vw);
+      object-fit: contain;
+    }
+    .menu { display: flex; align-items: center; gap: clamp(16px, 2.5vw, 30px); }
+    .menu a {
+      text-decoration: none;
+      color: #e7efff;
+      font-size: .93rem;
+      font-weight: 600;
+      transition: color .2s ease;
+    }
+    .menu a:hover, .menu a:focus-visible { color: var(--secondary); }
+    .menu .nav-cta {
+      background: linear-gradient(110deg, var(--primary), var(--secondary));
+      color: #06142c;
+      padding: 10px 16px;
+      border-radius: 10px;
+    }
+    .menu .nav-cta:hover { color: #fff; }
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: white;
+      background: var(--glass);
+      font-size: 1.45rem;
+      cursor: pointer;
     }
 
-    .menu{
-        display:none;
+    /* Portada */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 145px 0 80px;
     }
-
-    .logo img{
-        height:50px;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr);
+      gap: clamp(36px, 6vw, 76px);
+      align-items: center;
     }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 15px;
+      border: 1px solid rgba(56,200,245,.28);
+      border-radius: 999px;
+      background: rgba(56,200,245,.08);
+      color: #9deaff;
+      font-size: .86rem;
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--secondary);
+      box-shadow: 0 0 12px var(--secondary);
+    }
+    h1 {
+      font-size: clamp(2.6rem, 5vw, 4.45rem);
+      line-height: 1.08;
+      letter-spacing: -.045em;
+      margin-bottom: 24px;
+    }
+    .gradient-text {
+      background: linear-gradient(100deg, #4aa6ff 5%, #51d7f4 55%, #a8a0ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-copy {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.85;
+      margin-bottom: 30px;
+    }
+    .button-row { display: flex; flex-wrap: wrap; gap: 14px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 13px 21px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      text-decoration: none;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-primary {
+      background: linear-gradient(110deg, var(--primary), var(--secondary));
+      color: #06142c;
+      box-shadow: 0 8px 24px rgba(8,117,225,.18);
+    }
+    .btn-secondary { color: white; border-color: var(--border); background: rgba(255,255,255,.025); }
+    .btn-secondary:hover { border-color: rgba(56,200,245,.55); }
 
-}
+    .hero-card {
+      padding: clamp(25px, 3vw, 36px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(255,255,255,.085), rgba(255,255,255,.025));
+      box-shadow: 0 24px 80px rgba(0,0,0,.18);
+      animation: float 7s ease-in-out infinite;
+    }
+    .hero-card-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .hero-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: #9deaff;
+      background: rgba(56,200,245,.12);
+      font-size: 1.45rem;
+    }
+    .hero-card h2 { font-size: 1.2rem; }
+    .hero-card-top p { color: var(--muted); font-size: .88rem; }
+    .service-list { list-style: none; }
+    .service-list li {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.075);
+      color: #dce7f8;
+    }
+    .service-list li:last-child { border-bottom: 0; }
+    .check { color: var(--secondary); font-weight: 800; }
 
-</style>
+    /* Secciones generales */
+    section.content-section { padding: 100px 0; }
+    .section-heading { text-align: center; max-width: 760px; margin: 0 auto 48px; }
+    .section-kicker {
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-size: .78rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+      margin-bottom: 15px;
+    }
+    .section-subtitle { color: var(--muted); line-height: 1.8; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .card {
+      padding: 27px;
+      border: 1px solid var(--border);
+      border-radius: 19px;
+      background: var(--glass);
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56,200,245,.38);
+      background: rgba(255,255,255,.075);
+    }
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: rgba(8,117,225,.16);
+      color: #8ddfff;
+      font-size: 1.4rem;
+      margin-bottom: 19px;
+    }
+    .card h3 { font-size: 1.08rem; margin-bottom: 10px; }
+    .card p { color: var(--muted); font-size: .94rem; line-height: 1.75; }
+
+    /* Nosotros */
+    .about-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 42px;
+      align-items: center;
+      padding: clamp(26px, 5vw, 54px);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(8,117,225,.11), rgba(255,255,255,.025));
+    }
+    .about-copy h3 { font-size: clamp(1.55rem, 3vw, 2.1rem); line-height: 1.3; margin-bottom: 17px; }
+    .about-copy p { color: var(--muted); line-height: 1.85; margin-bottom: 14px; }
+    .about-points { display: grid; gap: 14px; }
+    .about-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      padding: 17px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(5,17,40,.36);
+    }
+    .about-point strong { display: block; margin-bottom: 3px; }
+    .about-point span { display: block; color: var(--muted); font-size: .9rem; }
+
+    /* Indicadores */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .stat {
+      text-align: center;
+      padding: 27px 16px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--glass);
+    }
+    .stat-number { color: var(--secondary); font-size: clamp(1.8rem, 3vw, 2.7rem); font-weight: 800; line-height: 1.2; margin-bottom: 8px; }
+    .stat p { color: var(--muted); font-size: .9rem; }
+
+    /* Contacto */
+    .contact-wrap {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: clamp(24px, 5vw, 44px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--glass);
+    }
+    .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { color: #dce7f8; font-size: .9rem; font-weight: 600; }
+    input, textarea {
+      width: 100%;
+      padding: 14px 15px;
+      border: 1px solid rgba(180,205,240,.18);
+      border-radius: 10px;
+      outline: none;
+      background: rgba(5,17,40,.72);
+      color: white;
+      font: inherit;
+    }
+    input:focus, textarea:focus { border-color: var(--secondary); box-shadow: 0 0 0 3px rgba(56,200,245,.1); }
+    input::placeholder, textarea::placeholder { color: #8294b1; }
+    textarea { min-height: 145px; resize: vertical; }
+    .form-note { grid-column: 1 / -1; color: var(--muted); font-size: .83rem; }
+    .contact-form .btn { justify-self: start; }
+    .form-status { grid-column: 1 / -1; color: #9deaff; font-size: .9rem; min-height: 1.2em; }
+
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid var(--border);
+      color: #91a4c1;
+      text-align: center;
+      font-size: .88rem;
+    }
+    footer a { color: #9deaff; text-decoration: none; }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+
+    @media (max-width: 1000px) {
+      .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-grid { gap: 34px; }
+      .menu { gap: 16px; }
+      .menu a { font-size: .87rem; }
+    }
+    @media (max-width: 760px) {
+      html { scroll-padding-top: 82px; }
+      .navbar { min-height: 72px; }
+      .logo img { height: 48px; max-width: 68vw; }
+      .menu-toggle { display: inline-grid; place-items: center; }
+      .menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 1px);
+        left: 0;
+        right: 0;
+        padding: 18px 5% 22px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: rgba(5,17,40,.98);
+        border-bottom: 1px solid var(--border);
+      }
+      .menu.is-open { display: flex; }
+      .menu a { padding: 13px 5px; font-size: .98rem; }
+      .menu .nav-cta { text-align: center; margin-top: 8px; }
+      .hero { min-height: auto; padding: 125px 0 65px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-card { animation: none; }
+      section.content-section { padding: 72px 0; }
+      .about-panel { grid-template-columns: 1fr; gap: 25px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .container { width: min(91%, var(--container)); }
+      h1 { font-size: clamp(2.35rem, 11vw, 3.2rem); }
+      .hero-copy { font-size: 1rem; }
+      .button-row { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; }
+      .services-grid { grid-template-columns: 1fr; }
+      .contact-form { grid-template-columns: 1fr; }
+      .field.full, .form-note, .form-status { grid-column: auto; }
+      .contact-form .btn { width: 100%; }
+      .section-heading { margin-bottom: 32px; }
+      .card { padding: 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 
 <body>
-
-<nav>
+  <header class="site-header">
     <div class="container navbar">
+      <a class="logo" href="#inicio" aria-label="DFP Tech FL, inicio">
+        <img src="Logo.png" alt="DFP Tech FL - Digital Solutions">
+      </a>
 
-        <div class="logo">
-            <a href="#inicio">
-                <img src="Logo.png" alt="DFP Tech FL">
-            </a>
-        </div>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-menu">☰</button>
 
-        <div class="menu">
-            <a href="#inicio">Inicio</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#nosotros">Nosotros</a>
-            <a href="#contacto">Contacto</a>
-        </div>
-
+      <nav class="menu" id="site-menu" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a class="nav-cta" href="#contacto">Contacto</a>
+      </nav>
     </div>
-</nav>
+  </header>
 
-<section id="inicio" class="hero">
+  <main>
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Microsoft 365 · Diseño web · Transformación digital</div>
+          <h1>Impulsamos su negocio con <span class="gradient-text">soluciones digitales innovadoras</span></h1>
+          <p class="hero-copy">
+            Ayudamos a las empresas a trabajar de forma más eficiente mediante Microsoft 365,
+            SharePoint Online, Power Platform, desarrollo web, seguridad empresarial y migraciones a la nube.
+          </p>
+          <div class="button-row">
+            <a href="#contacto" class="btn btn-primary">Solicitar consulta <span aria-hidden="true">&nbsp;→</span></a>
+            <a href="#servicios" class="btn btn-secondary">Conocer servicios</a>
+          </div>
+        </div>
 
-<div class="container hero-grid">
+        <aside class="hero-card" aria-label="Resumen de soluciones">
+          <div class="hero-card-top">
+            <div class="hero-icon" aria-hidden="true">✦</div>
+            <div>
+              <h2>Soluciones especializadas</h2>
+              <p>Tecnología alineada con sus objetivos</p>
+            </div>
+          </div>
+          <ul class="service-list">
+            <li><span class="check">✓</span> Microsoft 365 y colaboración</li>
+            <li><span class="check">✓</span> SharePoint Online e intranets</li>
+            <li><span class="check">✓</span> Automatización con Power Platform</li>
+            <li><span class="check">✓</span> Diseño web y tiendas online</li>
+            <li><span class="check">✓</span> Seguridad y administración de dispositivos</li>
+            <li><span class="check">✓</span> Migraciones a la nube</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
 
-<div>
+    <section id="servicios" class="content-section reveal">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Lo que hacemos</p>
+          <h2 class="section-title">Nuestros servicios</h2>
+          <p class="section-subtitle">Tecnología moderna, segura y práctica para impulsar el crecimiento de su empresa.</p>
+        </div>
 
-<div class="badge">
-Microsoft 365 • Diseño Web • Transformación Digital
-</div>
+        <div class="services-grid">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">☁</div>
+            <h3>Microsoft 365</h3>
+            <p>Implementación, configuración, administración y optimización de las herramientas de productividad de Microsoft.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">▤</div>
+            <h3>SharePoint Online</h3>
+            <p>Gestión documental, sitios de equipo, intranets y espacios de colaboración para su organización.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">⚡</div>
+            <h3>Power Platform</h3>
+            <p>Automatización de tareas y creación de aplicaciones y flujos de trabajo para reducir procesos manuales.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">⌘</div>
+            <h3>Diseño de páginas web</h3>
+            <p>Sitios web modernos, adaptables a dispositivos móviles y estructurados para presentar su negocio con claridad.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🛒</div>
+            <h3>Tiendas online</h3>
+            <p>Experiencias de comercio electrónico para presentar productos, facilitar compras y apoyar las ventas digitales.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">⌑</div>
+            <h3>Seguridad empresarial</h3>
+            <p>Apoyo con autenticación multifactor, protección de identidades, seguridad de datos y herramientas Microsoft.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">▣</div>
+            <h3>Microsoft Intune</h3>
+            <p>Administración y configuración de dispositivos corporativos con políticas alineadas a las necesidades del negocio.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">⇧</div>
+            <h3>Migraciones a la nube</h3>
+            <p>Planificación y acompañamiento para trasladar datos y servicios a entornos cloud de forma organizada.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<h1>
-Impulsamos su negocio con
-<span class="gradient">
-soluciones digitales innovadoras
-</span>
-</h1>
+    <!-- La sección tiene el id="nosotros" que utiliza el enlace del menú. -->
+    <section id="nosotros" class="content-section reveal">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Conózcanos</p>
+          <h2 class="section-title">Sobre DFP Tech FL</h2>
+          <p class="section-subtitle">Su aliado para aprovechar mejor la tecnología y avanzar en su transformación digital.</p>
+        </div>
 
-<p>
-Especialistas en Microsoft 365, SharePoint Online, Power Platform, diseño de páginas web, seguridad empresarial y migraciones a la nube.
-</p>
+        <div class="about-panel">
+          <div class="about-copy">
+            <h3>Convertimos los retos tecnológicos en oportunidades.</h3>
+            <p>
+              En DFP Tech FL ayudamos a las empresas a adoptar herramientas digitales que faciliten
+              la colaboración, organicen la información y mejoren los procesos cotidianos.
+            </p>
+            <p>
+              Nuestro enfoque combina soluciones empresariales de Microsoft, desarrollo web y
+              servicios en la nube para crear entornos de trabajo más conectados y eficientes.
+            </p>
+            <a href="#contacto" class="btn btn-primary">Hablemos de su proyecto</a>
+          </div>
+          <div class="about-points">
+            <div class="about-point">
+              <div class="hero-icon" aria-hidden="true">◎</div>
+              <div><strong>Enfoque personalizado</strong><span>Soluciones adaptadas a las necesidades y objetivos de cada negocio.</span></div>
+            </div>
+            <div class="about-point">
+              <div class="hero-icon" aria-hidden="true">◇</div>
+              <div><strong>Seguridad y organización</strong><span>Buenas prácticas para ayudar a proteger y administrar los recursos digitales.</span></div>
+            </div>
+            <div class="about-point">
+              <div class="hero-icon" aria-hidden="true">↗</div>
+              <div><strong>Mejora continua</strong><span>Tecnología pensada para acompañar la evolución de su empresa.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="buttons">
+    <section class="content-section reveal" aria-labelledby="beneficios-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Nuestro compromiso</p>
+          <h2 class="section-title" id="beneficios-title">Tecnología con propósito</h2>
+          <p class="section-subtitle">Trabajamos para que las herramientas digitales respondan a necesidades reales de su empresa.</p>
+        </div>
+        <div class="stats-grid">
+          <div class="stat"><div class="stat-number">A medida</div><p>Soluciones alineadas con su negocio</p></div>
+          <div class="stat"><div class="stat-number">Cloud</div><p>Herramientas y servicios en la nube</p></div>
+          <div class="stat"><div class="stat-number">Digital</div><p>Procesos más conectados</p></div>
+          <div class="stat"><div class="stat-number">Seguro</div><p>Atención a la protección de datos</p></div>
+        </div>
+      </div>
+    </section>
 
-<a href="#contacto" class="btn primary">
-Solicitar Consulta
-</a>
+    <section id="contacto" class="content-section reveal">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Empecemos</p>
+          <h2 class="section-title">Contáctenos</h2>
+          <p class="section-subtitle">Cuéntenos qué necesita y conversemos sobre cómo podemos ayudarle.</p>
+        </div>
 
-<a href="#servicios" class="btn outline">
-Nuestros Servicios
-</a>
+        <div class="contact-wrap">
+          <form class="contact-form" id="contact-form">
+            <div class="field">
+              <label for="name">Nombre *</label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Su nombre" required>
+            </div>
+            <div class="field">
+              <label for="email">Correo electrónico *</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="nombre@empresa.com" required>
+            </div>
+            <div class="field full">
+              <label for="company">Empresa</label>
+              <input id="company" name="company" type="text" autocomplete="organization" placeholder="Nombre de su empresa (opcional)">
+            </div>
+            <div class="field full">
+              <label for="message">¿Cómo podemos ayudarle? *</label>
+              <textarea id="message" name="message" placeholder="Describa brevemente su proyecto o necesidad..." required></textarea>
+            </div>
+            <p class="form-note">Al enviar, se preparará un mensaje en su aplicación de correo. Para recibir solicitudes directamente desde la web sin abrir el correo del visitante, deberá conectarse este formulario a un servicio de formularios o a un servidor.</p>
+            <button class="btn btn-primary" type="submit">Preparar correo <span aria-hidden="true">&nbsp;→</span></button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
 
-</div>
+  <footer>
+    <div class="container">
+      <p>© <span id="current-year">2026</span> DFP Tech FL · Microsoft 365 · Diseño Web · Transformación Digital</p>
+    </div>
+  </footer>
 
-</div>
+  <script>
+    // Menú móvil: abre/cierra y se cierra al elegir una sección.
+    const menuToggle = document.querySelector(".menu-toggle");
+    const siteMenu = document.querySelector("#site-menu");
 
-<div class="hero-card">
-
-<h3>Soluciones Especializadas</h3>
-
-<ul>
-<li>✅ Microsoft 365</li>
-<li>✅ SharePoint Online</li>
-<li>✅ Power Platform</li>
-<li>✅ Diseño de Páginas Web</li>
-<li>✅ Tiendas Online</li>
-<li>✅ Seguridad Empresarial</li>
-<li>✅ Microsoft Intune</li>
-<li>✅ Migraciones Cloud</li>
-</ul>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="servicios" class="reveal">
-
-<div class="container">
-
-<h2 class="section-title">Nuestros Servicios</h2>
-
-<p class="section-subtitle">
-Tecnología moderna para impulsar el crecimiento de su empresa.
-</p>
-
-<div class="services">
-
-<div class="card">
-<h3>☁️ Microsoft 365</h3>
-<p>Implementación, administración y optimización completa.</p>
-</div>
-
-<div class="card">
-<h3>📂 SharePoint Online</h3>
-<p>Gestión documental, colaboración e intranets corporativas.</p>
-</div>
-
-<div class="card">
-<h3>⚡ Power Platform</h3>
-<p>Automatización de procesos y aplicaciones empresariales.</p>
-</div>
-
-<div class="card">
-<h3>🌐 Diseño de Páginas Web</h3>
-<p>Sitios modernos, rápidos, optimizados y responsivos.</p>
-</div>
-
-<div class="card">
-<h3>🛒 Tiendas Online</h3>
-<p>Comercio electrónico profesional para vender en internet.</p>
-</div>
-
-<div class="card">
-<h3>🔒 Seguridad Empresarial</h3>
-<p>MFA, Defender, Entra ID y protección de datos.</p>
-</div>
-
-<div class="card">
-<h3>💻 Microsoft Intune</h3>
-<p>Administración moderna de dispositivos corporativos.</p>
-</div>
-
-<div class="card">
-<h3>🚀 Migracionesresultados para su negocio.
-</p>
-
-<div class="stats">
-
-<div class="stat">
-<div class="number">100%</div>
-<p>Soluciones Personalizadas</p>
-</div>
-
-<div class="stat">
-<div class="number">24/7</div>
-<p>Soporte</p>
-</div>
-
-<div class="stat">
-<div class="number">50+</div>
-<p>Implementaciones</p>
-</div>
-
-<div class="stat">
-<div class="number">99.9%</div>
-<p>Disponibilidad</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="contacto" class="reveal">
-
-<div class="container">
-
-<h2 class="section-title">Contáctenos</h2>
-
-<p class="section-subtitle">
-Comencemos su próximo proyecto.
-</p>
-
-<div class="contact">
-
-<form>
-<input type="text" placeholder="Nombre">
-<input type="email" placeholder="Correo electrónico">
-<input type="text" placeholder="Empresa">
-<textarea placeholder="Describa su proyecto"></textarea>
-
-<button type="submit" class="btn primary">
-Solicitar Consulta
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-</section>
-
-<footer>
-© 2026 DFP Tech FL | Microsoft 365 • Diseño Web • Transformación Digital
-</footer>
-
-<script>
-
-const reveals = document.querySelectorAll('.reveal');
-
-window.addEventListener('scroll', () => {
-
-    reveals.forEach(section => {
-
-        const top = section.getBoundingClientRect().top;
-
-        if(top < window.innerHeight - 120){
-            section.classList.add('active');
-        }
-
+    menuToggle.addEventListener("click", () => {
+      const isOpen = siteMenu.classList.toggle("is-open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
+      menuToggle.textContent = isOpen ? "×" : "☰";
     });
 
-});
+    siteMenu.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", () => {
+        siteMenu.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+        menuToggle.textContent = "☰";
+      });
+    });
 
-</script>
+    // Animación de entrada accesible para las secciones.
+    const revealSections = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      revealSections.forEach((section) => observer.observe(section));
+    } else {
+      revealSections.forEach((section) => section.classList.add("is-visible"));
+    }
 
+    // Actualiza automáticamente el año del pie de página.
+    document.querySelector("#current-year").textContent = new Date().getFullYear();
+
+    // El formulario prepara un correo; no requiere backend, pero sí una app de correo configurada.
+    document.querySelector("#contact-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const formData = new FormData(form);
+      const name = String(formData.get("name") || "").trim();
+      const email = String(formData.get("email") || "").trim();
+      const company = String(formData.get("company") || "").trim();
+      const message = String(formData.get("message") || "").trim();
+      const status = document.querySelector("#form-status");
+
+      // IMPORTANTE: reemplaza esta dirección por el correo real de tu empresa.
+      const contactEmail = "REEMPLAZA_CON_TU_CORREO";
+
+      if (contactEmail === "REEMPLAZA_CON_TU_CORREO") {
+        status.textContent = "El formulario está listo, pero falta configurar el correo receptor en el código antes de publicarlo.";
+        return;
+      }
+
+      const subject = encodeURIComponent("Consulta desde la página web de DFP Tech FL");
+      const body = encodeURIComponent(
+        "Nombre: " + name + "\n" +
+        "Correo: " + email + "\n" +
+        "Empresa: " + (company || "No indicada") + "\n\n" +
+        "Proyecto o consulta:\n" + message
+      );
+      status.textContent = "Abriendo su aplicación de correo...";
+      window.location.href = "mailto:" + contactEmail + "?subject=" + subject + "&body=" + body;
+    });
+  </script>
 </body>
 </html>
