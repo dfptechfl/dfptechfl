@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#07142e">
-  <title>DFP Tech FL | Microsoft 365, Diseño Web y Transformación Digital</title>
+  <title>DFP Tech FL | Soluciones Digitales</title>
   <meta name="description" content="DFP Tech FL ofrece soluciones empresariales en Microsoft 365, SharePoint Online, Power Platform, diseño web, seguridad y migraciones a la nube.">
-  <link rel="icon" type="image/png" href="Logo.png">
+  <link rel="icon" type="image/png" href="Logo-DFPTechFL-transparente.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -54,8 +54,8 @@
       position: fixed;
       inset: 0 0 auto;
       z-index: 1000;
-      background: rgba(5,17,40,.92);
-      border-bottom: 1px solid var(--border);
+      background: #c7efff;
+      border-bottom: 1px solid rgba(7,20,46,.14);
       backdrop-filter: blur(18px);
     }
     .navbar {
@@ -69,14 +69,14 @@
     .logo img {
       display: block;
       width: auto;
-      height: 58px;
-      max-width: min(340px, 38vw);
+      height: 64px;
+      max-width: min(360px, 42vw);
       object-fit: contain;
     }
     .menu { display: flex; align-items: center; gap: clamp(16px, 2.5vw, 30px); }
     .menu a {
       text-decoration: none;
-      color: #e7efff;
+      color: #08264b;
       font-size: .93rem;
       font-weight: 600;
       transition: color .2s ease;
@@ -89,14 +89,32 @@
       border-radius: 10px;
     }
     .menu .nav-cta:hover { color: #fff; }
+    .language-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 12px;
+      border: 1px solid rgba(8,38,75,.2);
+      border-radius: 10px;
+      background: rgba(255,255,255,.55);
+      color: #08264b;
+      font: inherit;
+      font-size: .88rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease;
+      white-space: nowrap;
+    }
+    .language-switch:hover { background: rgba(255,255,255,.9); transform: translateY(-1px); }
+    .language-switch:focus-visible { outline: 3px solid rgba(8,117,225,.35); outline-offset: 2px; }
     .menu-toggle {
       display: none;
       width: 44px;
       height: 44px;
       border: 1px solid var(--border);
       border-radius: 10px;
-      color: white;
-      background: var(--glass);
+      color: #08264b;
+      background: rgba(255,255,255,.45);
       font-size: 1.45rem;
       cursor: pointer;
     }
@@ -354,7 +372,7 @@
     @media (max-width: 760px) {
       html { scroll-padding-top: 82px; }
       .navbar { min-height: 72px; }
-      .logo img { height: 48px; max-width: 68vw; }
+      .logo img { height: 54px; max-width: 68vw; }
       .menu-toggle { display: inline-grid; place-items: center; }
       .menu {
         display: none;
@@ -366,12 +384,13 @@
         flex-direction: column;
         align-items: stretch;
         gap: 0;
-        background: rgba(5,17,40,.98);
+        background: #c7efff;
         border-bottom: 1px solid var(--border);
       }
       .menu.is-open { display: flex; }
       .menu a { padding: 13px 5px; font-size: .98rem; }
       .menu .nav-cta { text-align: center; margin-top: 8px; }
+      .menu .language-switch { justify-content: center; margin-top: 8px; width: 100%; }
       .hero { min-height: auto; padding: 125px 0 65px; }
       .hero-grid { grid-template-columns: 1fr; }
       .hero-card { animation: none; }
@@ -403,16 +422,17 @@
   <header class="site-header">
     <div class="container navbar">
       <a class="logo" href="#inicio" aria-label="DFP Tech FL, inicio">
-        <img src="Logo.png" alt="DFP Tech FL - Digital Solutions">
+        <img src="Logo-DFPTechFL-transparente.png" alt="DFP Tech FL - Digital Solutions">
       </a>
 
-      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-menu">☰</button>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" data-i18n-aria-label="menuOpen" aria-expanded="false" aria-controls="site-menu">☰</button>
 
-      <nav class="menu" id="site-menu" aria-label="Navegación principal">
-        <a href="#inicio">Inicio</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#nosotros">Nosotros</a>
-        <a class="nav-cta" href="#contacto">Contacto</a>
+      <nav class="menu" id="site-menu" aria-label="Navegación principal" data-i18n-aria-label="navAria">
+        <a href="#inicio" data-i18n="navHome">Inicio</a>
+        <button class="language-switch" id="language-switch" type="button" aria-label="Switch to English" title="Switch language"><span aria-hidden="true">🌐</span><span id="language-label">EN</span></button>
+        <a href="#servicios" data-i18n="navServices">Servicios</a>
+        <a href="#nosotros" data-i18n="navAbout">Nosotros</a>
+        <a class="nav-cta" href="#contacto" data-i18n="navContact">Contacto</a>
       </nav>
     </div>
   </header>
@@ -421,15 +441,15 @@
     <section id="inicio" class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">Microsoft 365 · Diseño web · Transformación digital</div>
-          <h1>Impulsamos su negocio con <span class="gradient-text">soluciones digitales innovadoras</span></h1>
-          <p class="hero-copy">
+          <div class="eyebrow" data-i18n="heroEyebrow">Microsoft 365 · Diseño web · Transformación digital</div>
+          <h1><span data-i18n="heroTitleStart">Impulsamos su negocio con</span> <span class="gradient-text" data-i18n="heroTitleAccent">soluciones digitales innovadoras</span></h1>
+          <p class="hero-copy" data-i18n="heroCopy">
             Ayudamos a las empresas a trabajar de forma más eficiente mediante Microsoft 365,
             SharePoint Online, Power Platform, desarrollo web, seguridad empresarial y migraciones a la nube.
           </p>
           <div class="button-row">
-            <a href="#contacto" class="btn btn-primary">Solicitar consulta <span aria-hidden="true">&nbsp;→</span></a>
-            <a href="#servicios" class="btn btn-secondary">Conocer servicios</a>
+            <a href="#contacto" class="btn btn-primary"><span data-i18n="heroCta">Solicitar consulta</span> <span aria-hidden="true">&nbsp;→</span></a>
+            <a href="#servicios" class="btn btn-secondary" data-i18n="heroSecondary">Conocer servicios</a>
           </div>
         </div>
 
@@ -437,17 +457,17 @@
           <div class="hero-card-top">
             <div class="hero-icon" aria-hidden="true">✦</div>
             <div>
-              <h2>Soluciones especializadas</h2>
-              <p>Tecnología alineada con sus objetivos</p>
+              <h2 data-i18n="heroCardTitle">Soluciones especializadas</h2>
+              <p data-i18n="heroCardSubtitle">Tecnología alineada con sus objetivos</p>
             </div>
           </div>
           <ul class="service-list">
-            <li><span class="check">✓</span> Microsoft 365 y colaboración</li>
-            <li><span class="check">✓</span> SharePoint Online e intranets</li>
-            <li><span class="check">✓</span> Automatización con Power Platform</li>
-            <li><span class="check">✓</span> Diseño web y tiendas online</li>
-            <li><span class="check">✓</span> Seguridad y administración de dispositivos</li>
-            <li><span class="check">✓</span> Migraciones a la nube</li>
+            <li><span class="check">✓</span> <span data-i18n="heroList1">Microsoft 365 y colaboración</span></li>
+            <li><span class="check">✓</span> <span data-i18n="heroList2">SharePoint Online e intranets</span></li>
+            <li><span class="check">✓</span> <span data-i18n="heroList3">Automatización con Power Platform</span></li>
+            <li><span class="check">✓</span> <span data-i18n="heroList4">Diseño web y tiendas online</span></li>
+            <li><span class="check">✓</span> <span data-i18n="heroList5">Seguridad y administración de dispositivos</span></li>
+            <li><span class="check">✓</span> <span data-i18n="heroList6">Migraciones a la nube</span></li>
           </ul>
         </aside>
       </div>
@@ -456,51 +476,51 @@
     <section id="servicios" class="content-section reveal">
       <div class="container">
         <div class="section-heading">
-          <p class="section-kicker">Lo que hacemos</p>
-          <h2 class="section-title">Nuestros servicios</h2>
-          <p class="section-subtitle">Tecnología moderna, segura y práctica para impulsar el crecimiento de su empresa.</p>
+          <p class="section-kicker" data-i18n="servicesKicker">Lo que hacemos</p>
+          <h2 class="section-title" data-i18n="servicesTitle">Nuestros servicios</h2>
+          <p class="section-subtitle" data-i18n="servicesSubtitle">Tecnología moderna, segura y práctica para impulsar el crecimiento de su empresa.</p>
         </div>
 
         <div class="services-grid">
           <article class="card">
             <div class="card-icon" aria-hidden="true">☁</div>
-            <h3>Microsoft 365</h3>
-            <p>Implementación, configuración, administración y optimización de las herramientas de productividad de Microsoft.</p>
+            <h3 data-i18n="service1Title">Microsoft 365</h3>
+            <p data-i18n="service1Text">Implementación, configuración, administración y optimización de las herramientas de productividad de Microsoft.</p>
           </article>
           <article class="card">
             <div class="card-icon" aria-hidden="true">▤</div>
-            <h3>SharePoint Online</h3>
-            <p>Gestión documental, sitios de equipo, intranets y espacios de colaboración para su organización.</p>
+            <h3 data-i18n="service2Title">SharePoint Online</h3>
+            <p data-i18n="service2Text">Gestión documental, sitios de equipo, intranets y espacios de colaboración para su organización.</p>
           </article>
           <article class="card">
             <div class="card-icon" aria-hidden="true">⚡</div>
-            <h3>Power Platform</h3>
-            <p>Automatización de tareas y creación de aplicaciones y flujos de trabajo para reducir procesos manuales.</p>
+            <h3 data-i18n="service3Title">Power Platform</h3>
+            <p data-i18n="service3Text">Automatización de tareas y creación de aplicaciones y flujos de trabajo para reducir procesos manuales.</p>
           </article>
           <article class="card">
             <div class="card-icon" aria-hidden="true">⌘</div>
-            <h3>Diseño de páginas web</h3>
-            <p>Sitios web modernos, adaptables a dispositivos móviles y estructurados para presentar su negocio con claridad.</p>
+            <h3 data-i18n="service4Title">Diseño de páginas web</h3>
+            <p data-i18n="service4Text">Sitios web modernos, adaptables a dispositivos móviles y estructurados para presentar su negocio con claridad.</p>
           </article>
           <article class="card">
             <div class="card-icon" aria-hidden="true">🛒</div>
-            <h3>Tiendas online</h3>
-            <p>Experiencias de comercio electrónico para presentar productos, facilitar compras y apoyar las ventas digitales.</p>
+            <h3 data-i18n="service5Title">Tiendas online</h3>
+            <p data-i18n="service5Text">Experiencias de comercio electrónico para presentar productos, facilitar compras y apoyar las ventas digitales.</p>
           </article>
           <article class="card">
             <div class="card-icon" aria-hidden="true">⌑</div>
-            <h3>Seguridad empresarial</h3>
-            <p>Apoyo con autenticación multifactor, protección de identidades, seguridad de datos y herramientas Microsoft.</p>
+            <h3 data-i18n="service6Title">Seguridad empresarial</h3>
+            <p data-i18n="service6Text">Apoyo con autenticación multifactor, protección de identidades, seguridad de datos y herramientas Microsoft.</p>
           </article>
           <article class="card">
             <div class="card-icon" aria-hidden="true">▣</div>
-            <h3>Microsoft Intune</h3>
-            <p>Administración y configuración de dispositivos corporativos con políticas alineadas a las necesidades del negocio.</p>
+            <h3 data-i18n="service7Title">Microsoft Intune</h3>
+            <p data-i18n="service7Text">Administración y configuración de dispositivos corporativos con políticas alineadas a las necesidades del negocio.</p>
           </article>
           <article class="card">
             <div class="card-icon" aria-hidden="true">⇧</div>
-            <h3>Migraciones a la nube</h3>
-            <p>Planificación y acompañamiento para trasladar datos y servicios a entornos cloud de forma organizada.</p>
+            <h3 data-i18n="service8Title">Migraciones a la nube</h3>
+            <p data-i18n="service8Text">Planificación y acompañamiento para trasladar datos y servicios a entornos cloud de forma organizada.</p>
           </article>
         </div>
       </div>
@@ -510,36 +530,36 @@
     <section id="nosotros" class="content-section reveal">
       <div class="container">
         <div class="section-heading">
-          <p class="section-kicker">Conózcanos</p>
-          <h2 class="section-title">Sobre DFP Tech FL</h2>
-          <p class="section-subtitle">Su aliado para aprovechar mejor la tecnología y avanzar en su transformación digital.</p>
+          <p class="section-kicker" data-i18n="aboutKicker">Conózcanos</p>
+          <h2 class="section-title" data-i18n="aboutTitle">Sobre DFP Tech FL</h2>
+          <p class="section-subtitle" data-i18n="aboutSubtitle">Su aliado para aprovechar mejor la tecnología y avanzar en su transformación digital.</p>
         </div>
 
         <div class="about-panel">
           <div class="about-copy">
-            <h3>Convertimos los retos tecnológicos en oportunidades.</h3>
-            <p>
+            <h3 data-i18n="aboutHeadline">Convertimos los retos tecnológicos en oportunidades.</h3>
+            <p data-i18n="aboutText1">
               En DFP Tech FL ayudamos a las empresas a adoptar herramientas digitales que faciliten
               la colaboración, organicen la información y mejoren los procesos cotidianos.
             </p>
-            <p>
+            <p data-i18n="aboutText2">
               Nuestro enfoque combina soluciones empresariales de Microsoft, desarrollo web y
               servicios en la nube para crear entornos de trabajo más conectados y eficientes.
             </p>
-            <a href="#contacto" class="btn btn-primary">Hablemos de su proyecto</a>
+            <a href="#contacto" class="btn btn-primary" data-i18n="aboutCta">Hablemos de su proyecto</a>
           </div>
           <div class="about-points">
             <div class="about-point">
               <div class="hero-icon" aria-hidden="true">◎</div>
-              <div><strong>Enfoque personalizado</strong><span>Soluciones adaptadas a las necesidades y objetivos de cada negocio.</span></div>
+              <div><strong data-i18n="aboutPoint1Title">Enfoque personalizado</strong><span data-i18n="aboutPoint1Text">Soluciones adaptadas a las necesidades y objetivos de cada negocio.</span></div>
             </div>
             <div class="about-point">
               <div class="hero-icon" aria-hidden="true">◇</div>
-              <div><strong>Seguridad y organización</strong><span>Buenas prácticas para ayudar a proteger y administrar los recursos digitales.</span></div>
+              <div><strong data-i18n="aboutPoint2Title">Seguridad y organización</strong><span data-i18n="aboutPoint2Text">Buenas prácticas para ayudar a proteger y administrar los recursos digitales.</span></div>
             </div>
             <div class="about-point">
               <div class="hero-icon" aria-hidden="true">↗</div>
-              <div><strong>Mejora continua</strong><span>Tecnología pensada para acompañar la evolución de su empresa.</span></div>
+              <div><strong data-i18n="aboutPoint3Title">Mejora continua</strong><span data-i18n="aboutPoint3Text">Tecnología pensada para acompañar la evolución de su empresa.</span></div>
             </div>
           </div>
         </div>
@@ -549,15 +569,15 @@
     <section class="content-section reveal" aria-labelledby="beneficios-title">
       <div class="container">
         <div class="section-heading">
-          <p class="section-kicker">Nuestro compromiso</p>
-          <h2 class="section-title" id="beneficios-title">Tecnología con propósito</h2>
-          <p class="section-subtitle">Trabajamos para que las herramientas digitales respondan a necesidades reales de su empresa.</p>
+          <p class="section-kicker" data-i18n="benefitsKicker">Nuestro compromiso</p>
+          <h2 class="section-title" id="beneficios-title" data-i18n="benefitsTitle">Tecnología con propósito</h2>
+          <p class="section-subtitle" data-i18n="benefitsSubtitle">Trabajamos para que las herramientas digitales respondan a necesidades reales de su empresa.</p>
         </div>
         <div class="stats-grid">
-          <div class="stat"><div class="stat-number">A medida</div><p>Soluciones alineadas con su negocio</p></div>
-          <div class="stat"><div class="stat-number">Cloud</div><p>Herramientas y servicios en la nube</p></div>
-          <div class="stat"><div class="stat-number">Digital</div><p>Procesos más conectados</p></div>
-          <div class="stat"><div class="stat-number">Seguro</div><p>Atención a la protección de datos</p></div>
+          <div class="stat"><div class="stat-number" data-i18n="stat1Title">A medida</div><p data-i18n="stat1Text">Soluciones alineadas con su negocio</p></div>
+          <div class="stat"><div class="stat-number" data-i18n="stat2Title">Cloud</div><p data-i18n="stat2Text">Herramientas y servicios en la nube</p></div>
+          <div class="stat"><div class="stat-number" data-i18n="stat3Title">Digital</div><p data-i18n="stat3Text">Procesos más conectados</p></div>
+          <div class="stat"><div class="stat-number" data-i18n="stat4Title">Seguro</div><p data-i18n="stat4Text">Atención a la protección de datos</p></div>
         </div>
       </div>
     </section>
@@ -565,31 +585,31 @@
     <section id="contacto" class="content-section reveal">
       <div class="container">
         <div class="section-heading">
-          <p class="section-kicker">Empecemos</p>
-          <h2 class="section-title">Contáctenos</h2>
-          <p class="section-subtitle">Cuéntenos qué necesita y conversemos sobre cómo podemos ayudarle.</p>
+          <p class="section-kicker" data-i18n="contactKicker">Empecemos</p>
+          <h2 class="section-title" data-i18n="contactTitle">Contáctenos</h2>
+          <p class="section-subtitle" data-i18n="contactSubtitle">Cuéntenos qué necesita y conversemos sobre cómo podemos ayudarle.</p>
         </div>
 
         <div class="contact-wrap">
           <form class="contact-form" id="contact-form">
             <div class="field">
-              <label for="name">Nombre *</label>
-              <input id="name" name="name" type="text" autocomplete="name" placeholder="Su nombre" required>
+              <label for="name" data-i18n="formNameLabel">Nombre *</label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Su nombre" data-i18n-placeholder="formNamePlaceholder" required>
             </div>
             <div class="field">
-              <label for="email">Correo electrónico *</label>
-              <input id="email" name="email" type="email" autocomplete="email" placeholder="nombre@empresa.com" required>
+              <label for="email" data-i18n="formEmailLabel">Correo electrónico *</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="nombre@empresa.com" data-i18n-placeholder="formEmailPlaceholder" required>
             </div>
             <div class="field full">
-              <label for="company">Empresa</label>
-              <input id="company" name="company" type="text" autocomplete="organization" placeholder="Nombre de su empresa (opcional)">
+              <label for="company" data-i18n="formCompanyLabel">Empresa</label>
+              <input id="company" name="company" type="text" autocomplete="organization" placeholder="Nombre de su empresa (opcional)" data-i18n-placeholder="formCompanyPlaceholder">
             </div>
             <div class="field full">
-              <label for="message">¿Cómo podemos ayudarle? *</label>
-              <textarea id="message" name="message" placeholder="Describa brevemente su proyecto o necesidad..." required></textarea>
+              <label for="message" data-i18n="formMessageLabel">¿Cómo podemos ayudarle? *</label>
+              <textarea id="message" name="message" placeholder="Describa brevemente su proyecto o necesidad..." data-i18n-placeholder="formMessagePlaceholder" required></textarea>
             </div>
-            <p class="form-note">Al enviar, se preparará un mensaje en su aplicación de correo. Para recibir solicitudes directamente desde la web sin abrir el correo del visitante, deberá conectarse este formulario a un servicio de formularios o a un servidor.</p>
-            <button class="btn btn-primary" type="submit">Preparar correo <span aria-hidden="true">&nbsp;→</span></button>
+            <p class="form-note" data-i18n="formNote">Al enviar, se preparará un mensaje en su aplicación de correo. Para recibir solicitudes directamente desde la web sin abrir el correo del visitante, deberá conectarse este formulario a un servicio de formularios o a un servidor.</p>
+            <button class="btn btn-primary" type="submit"><span data-i18n="formSubmit">Preparar correo</span> <span aria-hidden="true">&nbsp;→</span></button>
             <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
@@ -599,19 +619,152 @@
 
   <footer>
     <div class="container">
-      <p>© <span id="current-year">2026</span> DFP Tech FL · Microsoft 365 · Diseño Web · Transformación Digital</p>
+      <p>© <span id="current-year">2026</span> <span data-i18n="footerText">DFP Tech FL · Microsoft 365 · Diseño Web · Transformación Digital</span></p>
     </div>
   </footer>
 
   <script>
-    // Menú móvil: abre/cierra y se cierra al elegir una sección.
+    const translations = {
+      es: {
+        navHome:"Inicio", navServices:"Servicios", navAbout:"Nosotros", navContact:"Contacto",
+        heroEyebrow:"Microsoft 365 · Diseño web · Transformación digital",
+        heroTitleStart:"Impulsamos su negocio con", heroTitleAccent:"soluciones digitales innovadoras",
+        heroCopy:"Ayudamos a las empresas a trabajar de forma más eficiente mediante Microsoft 365, SharePoint Online, Power Platform, desarrollo web, seguridad empresarial y migraciones a la nube.",
+        heroCta:"Solicitar consulta", heroSecondary:"Conocer servicios",
+        heroCardTitle:"Soluciones especializadas", heroCardSubtitle:"Tecnología alineada con sus objetivos",
+        heroList1:"Microsoft 365 y colaboración", heroList2:"SharePoint Online e intranets",
+        heroList3:"Automatización con Power Platform", heroList4:"Diseño web y tiendas online",
+        heroList5:"Seguridad y administración de dispositivos", heroList6:"Migraciones a la nube",
+        servicesKicker:"Lo que hacemos", servicesTitle:"Nuestros servicios",
+        servicesSubtitle:"Tecnología moderna, segura y práctica para impulsar el crecimiento de su empresa.",
+        service1Title:"Microsoft 365", service1Text:"Implementación, configuración, administración y optimización de las herramientas de productividad de Microsoft.",
+        service2Title:"SharePoint Online", service2Text:"Gestión documental, sitios de equipo, intranets y espacios de colaboración para su organización.",
+        service3Title:"Power Platform", service3Text:"Automatización de tareas y creación de aplicaciones y flujos de trabajo para reducir procesos manuales.",
+        service4Title:"Diseño de páginas web", service4Text:"Sitios web modernos, adaptables a dispositivos móviles y estructurados para presentar su negocio con claridad.",
+        service5Title:"Tiendas online", service5Text:"Experiencias de comercio electrónico para presentar productos, facilitar compras y apoyar las ventas digitales.",
+        service6Title:"Seguridad empresarial", service6Text:"Apoyo con autenticación multifactor, protección de identidades, seguridad de datos y herramientas Microsoft.",
+        service7Title:"Microsoft Intune", service7Text:"Administración y configuración de dispositivos corporativos con políticas alineadas a las necesidades del negocio.",
+        service8Title:"Migraciones a la nube", service8Text:"Planificación y acompañamiento para trasladar datos y servicios a entornos cloud de forma organizada.",
+        aboutKicker:"Conózcanos", aboutTitle:"Sobre DFP Tech FL",
+        aboutSubtitle:"Su aliado para aprovechar mejor la tecnología y avanzar en su transformación digital.",
+        aboutHeadline:"Convertimos los retos tecnológicos en oportunidades.",
+        aboutText1:"En DFP Tech FL ayudamos a las empresas a adoptar herramientas digitales que faciliten la colaboración, organicen la información y mejoren los procesos cotidianos.",
+        aboutText2:"Nuestro enfoque combina soluciones empresariales de Microsoft, desarrollo web y servicios en la nube para crear entornos de trabajo más conectados y eficientes.",
+        aboutCta:"Hablemos de su proyecto",
+        aboutPoint1Title:"Enfoque personalizado", aboutPoint1Text:"Soluciones adaptadas a las necesidades y objetivos de cada negocio.",
+        aboutPoint2Title:"Seguridad y organización", aboutPoint2Text:"Buenas prácticas para ayudar a proteger y administrar los recursos digitales.",
+        aboutPoint3Title:"Mejora continua", aboutPoint3Text:"Tecnología pensada para acompañar la evolución de su empresa.",
+        benefitsKicker:"Nuestro compromiso", benefitsTitle:"Tecnología con propósito",
+        benefitsSubtitle:"Trabajamos para que las herramientas digitales respondan a necesidades reales de su empresa.",
+        stat1Title:"A medida", stat1Text:"Soluciones alineadas con su negocio",
+        stat2Title:"Nube", stat2Text:"Herramientas y servicios en la nube",
+        stat3Title:"Digital", stat3Text:"Procesos más conectados",
+        stat4Title:"Seguro", stat4Text:"Atención a la protección de datos",
+        contactKicker:"Empecemos", contactTitle:"Contáctenos",
+        contactSubtitle:"Cuéntenos qué necesita y conversemos sobre cómo podemos ayudarle.",
+        formNameLabel:"Nombre *", formNamePlaceholder:"Su nombre",
+        formEmailLabel:"Correo electrónico *", formEmailPlaceholder:"nombre@empresa.com",
+        formCompanyLabel:"Empresa", formCompanyPlaceholder:"Nombre de su empresa (opcional)",
+        formMessageLabel:"¿Cómo podemos ayudarle? *", formMessagePlaceholder:"Describa brevemente su proyecto o necesidad...",
+        formNote:"Al enviar, se preparará un mensaje en su aplicación de correo. Para recibir solicitudes directamente desde la web sin abrir el correo del visitante, deberá conectarse este formulario a un servicio de formularios o a un servidor.",
+        formSubmit:"Preparar correo", footerText:"DFP Tech FL · Microsoft 365 · Diseño Web · Transformación Digital",
+        menuOpen:"Abrir menú", menuClose:"Cerrar menú", navAria:"Navegación principal",
+        formMissingEmail:"El formulario está listo, pero falta configurar el correo receptor en el código antes de publicarlo.",
+        formOpeningEmail:"Abriendo su aplicación de correo...",
+        mailSubject:"Consulta desde la página web de DFP Tech FL",
+        mailName:"Nombre", mailEmail:"Correo", mailCompany:"Empresa", mailNotSpecified:"No indicada",
+        mailMessage:"Proyecto o consulta"
+      },
+      en: {
+        navHome:"Home", navServices:"Services", navAbout:"About", navContact:"Contact",
+        heroEyebrow:"Microsoft 365 · Web Design · Digital Transformation",
+        heroTitleStart:"We empower your business with", heroTitleAccent:"innovative digital solutions",
+        heroCopy:"We help businesses work more efficiently through Microsoft 365, SharePoint Online, Power Platform, web development, business security, and cloud migrations.",
+        heroCta:"Request a consultation", heroSecondary:"Explore services",
+        heroCardTitle:"Specialized solutions", heroCardSubtitle:"Technology aligned with your goals",
+        heroList1:"Microsoft 365 and collaboration", heroList2:"SharePoint Online and intranets",
+        heroList3:"Power Platform automation", heroList4:"Web design and online stores",
+        heroList5:"Security and device management", heroList6:"Cloud migrations",
+        servicesKicker:"What we do", servicesTitle:"Our services",
+        servicesSubtitle:"Modern, secure, practical technology to help your business grow.",
+        service1Title:"Microsoft 365", service1Text:"Implementation, configuration, administration, and optimization of Microsoft productivity tools.",
+        service2Title:"SharePoint Online", service2Text:"Document management, team sites, intranets, and collaboration spaces for your organization.",
+        service3Title:"Power Platform", service3Text:"Task automation and app and workflow development to reduce manual processes.",
+        service4Title:"Website Design", service4Text:"Modern, mobile-friendly websites designed to present your business clearly.",
+        service5Title:"Online Stores", service5Text:"E-commerce experiences to showcase products, simplify purchases, and support digital sales.",
+        service6Title:"Business Security", service6Text:"Support with multifactor authentication, identity protection, data security, and Microsoft tools.",
+        service7Title:"Microsoft Intune", service7Text:"Corporate device administration and configuration with policies aligned to business needs.",
+        service8Title:"Cloud Migrations", service8Text:"Planning and support to move data and services to cloud environments in an organized way.",
+        aboutKicker:"Get to know us", aboutTitle:"About DFP Tech FL",
+        aboutSubtitle:"Your partner in getting more from technology and moving forward with digital transformation.",
+        aboutHeadline:"We turn technology challenges into opportunities.",
+        aboutText1:"At DFP Tech FL, we help businesses adopt digital tools that improve collaboration, organize information, and streamline everyday processes.",
+        aboutText2:"Our approach combines Microsoft business solutions, web development, and cloud services to create more connected and efficient workplaces.",
+        aboutCta:"Let's discuss your project",
+        aboutPoint1Title:"Personalized approach", aboutPoint1Text:"Solutions tailored to each business's needs and goals.",
+        aboutPoint2Title:"Security and organization", aboutPoint2Text:"Best practices to help protect and manage digital resources.",
+        aboutPoint3Title:"Continuous improvement", aboutPoint3Text:"Technology designed to support your company's growth.",
+        benefitsKicker:"Our commitment", benefitsTitle:"Technology with purpose",
+        benefitsSubtitle:"We make technology work toward your business's real-world needs.",
+        stat1Title:"Tailored", stat1Text:"Solutions aligned with your business",
+        stat2Title:"Cloud", stat2Text:"Cloud-based tools and services",
+        stat3Title:"Digital", stat3Text:"More connected processes",
+        stat4Title:"Secure", stat4Text:"A focus on data protection",
+        contactKicker:"Let's get started", contactTitle:"Contact us",
+        contactSubtitle:"Tell us what you need and let's discuss how we can help.",
+        formNameLabel:"Name *", formNamePlaceholder:"Your name",
+        formEmailLabel:"Email address *", formEmailPlaceholder:"name@company.com",
+        formCompanyLabel:"Company", formCompanyPlaceholder:"Your company name (optional)",
+        formMessageLabel:"How can we help? *", formMessagePlaceholder:"Briefly describe your project or needs...",
+        formNote:"Submitting this form prepares a message in your email application. To receive requests directly from the website without opening the visitor's email app, connect this form to a form service or server.",
+        formSubmit:"Prepare email", footerText:"DFP Tech FL · Microsoft 365 · Web Design · Digital Transformation",
+        menuOpen:"Open menu", menuClose:"Close menu", navAria:"Main navigation",
+        formMissingEmail:"The form is ready, but the recipient email must be configured in the code before publishing.",
+        formOpeningEmail:"Opening your email application...",
+        mailSubject:"Inquiry from the DFP Tech FL website",
+        mailName:"Name", mailEmail:"Email", mailCompany:"Company", mailNotSpecified:"Not provided",
+        mailMessage:"Project or inquiry"
+      }
+    };
+
+    let currentLanguage = "es";
+    const languageButton = document.querySelector("#language-switch");
+    const languageLabel = document.querySelector("#language-label");
     const menuToggle = document.querySelector(".menu-toggle");
     const siteMenu = document.querySelector("#site-menu");
+
+    function setLanguage(language) {
+      currentLanguage = language;
+      const dictionary = translations[language];
+      document.documentElement.lang = language;
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.getAttribute("data-i18n");
+        if (dictionary[key] !== undefined) element.textContent = dictionary[key];
+      });
+      document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+        const key = element.getAttribute("data-i18n-placeholder");
+        if (dictionary[key] !== undefined) element.setAttribute("placeholder", dictionary[key]);
+      });
+      document.querySelectorAll("[data-i18n-aria-label]").forEach((element) => {
+        const key = element.getAttribute("data-i18n-aria-label");
+        if (dictionary[key] !== undefined) element.setAttribute("aria-label", dictionary[key]);
+      });
+      languageLabel.textContent = language === "es" ? "EN" : "ES";
+      languageButton.setAttribute("aria-label", language === "es" ? "Switch to English" : "Cambiar a español");
+      languageButton.setAttribute("title", language === "es" ? "Switch to English" : "Cambiar a español");
+      document.title = language === "es"
+        ? "DFP Tech FL | Soluciones Digitales"
+        : "DFP Tech FL | Digital Solutions";
+    }
+
+    languageButton.addEventListener("click", () => {
+      setLanguage(currentLanguage === "es" ? "en" : "es");
+    });
 
     menuToggle.addEventListener("click", () => {
       const isOpen = siteMenu.classList.toggle("is-open");
       menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
+      menuToggle.setAttribute("aria-label", isOpen ? translations[currentLanguage].menuClose : translations[currentLanguage].menuOpen);
       menuToggle.textContent = isOpen ? "×" : "☰";
     });
 
@@ -619,12 +772,11 @@
       link.addEventListener("click", () => {
         siteMenu.classList.remove("is-open");
         menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Abrir menú");
+        menuToggle.setAttribute("aria-label", translations[currentLanguage].menuOpen);
         menuToggle.textContent = "☰";
       });
     });
 
-    // Animación de entrada accesible para las secciones.
     const revealSections = document.querySelectorAll(".reveal");
     if ("IntersectionObserver" in window) {
       const observer = new IntersectionObserver((entries, obs) => {
@@ -640,38 +792,39 @@
       revealSections.forEach((section) => section.classList.add("is-visible"));
     }
 
-    // Actualiza automáticamente el año del pie de página.
     document.querySelector("#current-year").textContent = new Date().getFullYear();
 
-    // El formulario prepara un correo; no requiere backend, pero sí una app de correo configurada.
     document.querySelector("#contact-form").addEventListener("submit", (event) => {
       event.preventDefault();
-      const form = event.currentTarget;
-      const formData = new FormData(form);
+      const formData = new FormData(event.currentTarget);
       const name = String(formData.get("name") || "").trim();
       const email = String(formData.get("email") || "").trim();
       const company = String(formData.get("company") || "").trim();
       const message = String(formData.get("message") || "").trim();
       const status = document.querySelector("#form-status");
+      const t = translations[currentLanguage];
 
-      // IMPORTANTE: reemplaza esta dirección por el correo real de tu empresa.
+      // Replace this placeholder with your real business email before publishing.
       const contactEmail = "REEMPLAZA_CON_TU_CORREO";
 
       if (contactEmail === "REEMPLAZA_CON_TU_CORREO") {
-        status.textContent = "El formulario está listo, pero falta configurar el correo receptor en el código antes de publicarlo.";
+        status.textContent = t.formMissingEmail;
         return;
       }
 
-      const subject = encodeURIComponent("Consulta desde la página web de DFP Tech FL");
+      const subject = encodeURIComponent(t.mailSubject);
       const body = encodeURIComponent(
-        "Nombre: " + name + "\n" +
-        "Correo: " + email + "\n" +
-        "Empresa: " + (company || "No indicada") + "\n\n" +
-        "Proyecto o consulta:\n" + message
+        t.mailName + ": " + name + "\n" +
+        t.mailEmail + ": " + email + "\n" +
+        t.mailCompany + ": " + (company || t.mailNotSpecified) + "\n\n" +
+        t.mailMessage + ":\n" + message
       );
-      status.textContent = "Abriendo su aplicación de correo...";
+      status.textContent = t.formOpeningEmail;
       window.location.href = "mailto:" + contactEmail + "?subject=" + subject + "&body=" + body;
     });
+
+    // Spanish is the default language on every fresh page load.
+    setLanguage("es");
   </script>
 </body>
 </html>
