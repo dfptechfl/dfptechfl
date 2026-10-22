@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DFP Tech FL | Soluciones Microsoft 365</title>
+<title>DFP Tech FL | Microsoft 365 & Transformación Digital</title>
 
-<meta name="description" content="Implementación, migración, automatización y seguridad con Microsoft 365 para pequeñas y medianas empresas.">
+<meta name="description" content="Servicios profesionales de Microsoft 365, SharePoint, Power Platform, Intune y Transformación Digital.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,8 +18,8 @@
     --primary:#00A3FF;
     --secondary:#00E5FF;
     --accent:#7B61FF;
-    --dark:#050816;
-    --text:#ffffff;
+    --dark:#060B18;
+    --dark2:#0C1328;
 }
 
 *{
@@ -35,18 +35,19 @@ html{
 
 body{
     background:var(--dark);
-    color:white;
+    color:#fff;
+    overflow-x:hidden;
 }
 
 body::before{
-    content:'';
+    content:"";
     position:fixed;
     inset:0;
     z-index:-1;
     background:
-    radial-gradient(circle at top left, rgba(0,163,255,.25), transparent 35%),
-    radial-gradient(circle at bottom right, rgba(123,97,255,.20), transparent 35%),
-    #050816;
+    radial-gradient(circle at top left, rgba(0,163,255,.18), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(123,97,255,.18), transparent 35%),
+    var(--dark);
 }
 
 .container{
@@ -55,15 +56,15 @@ body::before{
     margin:auto;
 }
 
-/* NAVBAR */
+/* NAV */
 
 nav{
     position:fixed;
-    top:0;
     width:100%;
+    top:0;
     z-index:1000;
-    background:rgba(5,8,22,.85);
     backdrop-filter:blur(15px);
+    background:rgba(6,11,24,.8);
     border-bottom:1px solid rgba(255,255,255,.08);
 }
 
@@ -75,14 +76,15 @@ nav{
 }
 
 .logo{
-    font-size:1.6rem;
+    font-size:1.7rem;
     font-weight:800;
     color:var(--secondary);
+    animation:pulse 3s infinite;
 }
 
 .menu{
     display:flex;
-    gap:30px;
+    gap:25px;
 }
 
 .menu a{
@@ -93,6 +95,16 @@ nav{
 
 .menu a:hover{
     color:var(--secondary);
+}
+
+@keyframes pulse{
+    0%{text-shadow:0 0 5px #00A3FF;}
+    50%{
+        text-shadow:
+        0 0 15px #00A3FF,
+        0 0 30px #00E5FF;
+    }
+    100%{text-shadow:0 0 5px #00A3FF;}
 }
 
 /* HERO */
@@ -116,14 +128,23 @@ nav{
     border-radius:999px;
     background:rgba(0,163,255,.15);
     border:1px solid rgba(0,163,255,.25);
-    color:var(--secondary);
-    margin-bottom:25px;
+    color:#7ddfff;
+    margin-bottom:20px;
 }
 
 .hero h1{
     font-size:4rem;
     line-height:1.1;
     margin-bottom:20px;
+    animation:fadeUp 1s ease;
+}
+
+.hero p{
+    font-size:1.15rem;
+    line-height:1.8;
+    color:#c7d1df;
+    margin-bottom:25px;
+    animation:fadeUp 1.3s ease;
 }
 
 .gradient{
@@ -137,13 +158,6 @@ nav{
     -webkit-text-fill-color:transparent;
 }
 
-.hero p{
-    color:#c8d2e2;
-    font-size:1.1rem;
-    line-height:1.8;
-    margin-bottom:30px;
-}
-
 .buttons{
     display:flex;
     gap:15px;
@@ -151,53 +165,65 @@ nav{
 }
 
 .btn{
-    padding:15px 28px;
+    padding:15px 25px;
     border-radius:12px;
     text-decoration:none;
     font-weight:700;
     transition:.3s;
 }
 
+.btn:hover{
+    transform:translateY(-5px);
+}
+
 .btn-primary{
-    background:linear-gradient(
-    90deg,
-    var(--primary),
-    var(--secondary));
+    background:linear-gradient(90deg,var(--primary),var(--secondary));
     color:white;
 }
 
-.btn-primary:hover{
-    transform:translateY(-3px);
-}
-
 .btn-outline{
-    border:1px solid rgba(255,255,255,.2);
+    border:1px solid rgba(255,255,255,.25);
     color:white;
 }
 
 .hero-card{
     background:rgba(255,255,255,.05);
     backdrop-filter:blur(20px);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:24px;
+    border-radius:25px;
     padding:35px;
+    border:1px solid rgba(255,255,255,.08);
+    animation:float 6s ease-in-out infinite;
 }
 
 .hero-card h3{
-    color:var(--secondary);
     margin-bottom:20px;
-}
-
-.hero-card ul{
-    list-style:none;
+    color:var(--secondary);
 }
 
 .hero-card li{
+    list-style:none;
     padding:12px 0;
     border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-/* SECCIONES */
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0);}
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* SECTIONS */
 
 section{
     padding:100px 0;
@@ -206,59 +232,80 @@ section{
 .section-title{
     text-align:center;
     font-size:2.8rem;
-    margin-bottom:20px;
+    margin-bottom:15px;
 }
 
 .section-subtitle{
     text-align:center;
-    color:#b9c4d8;
+    color:#a9b4c9;
     margin-bottom:60px;
 }
 
 .services{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:25px;
 }
 
-.service-card{
+.card{
     background:rgba(255,255,255,.05);
     border:1px solid rgba(255,255,255,.08);
     border-radius:20px;
     padding:30px;
-    transition:.3s;
+    transition:.4s;
 }
 
-.service-card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 0 30px rgba(0,163,255,.18);
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 30px rgba(0,163,255,.35);
 }
 
-.service-card h3{
+.card h3{
     color:var(--secondary);
     margin-bottom:15px;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.stat{
+    text-align:center;
+    padding:30px;
+    border-radius:20px;
+    background:rgba(255,255,255,.05);
+}
+
+.number{
+    font-size:3rem;
+    font-weight:800;
+    color:var(--secondary);
 }
 
 /* CONTACTO */
 
 .contact{
-    max-width:700px;
+    max-width:800px;
     margin:auto;
 }
 
 input,
 textarea{
     width:100%;
-    margin-bottom:15px;
     padding:15px;
     border:none;
     border-radius:10px;
-    background:#0f172a;
+    background:#121c32;
     color:white;
+    margin-bottom:15px;
 }
 
 textarea{
-    min-height:150px;
+    min-height:160px;
 }
 
 button{
@@ -266,52 +313,79 @@ button{
     cursor:pointer;
 }
 
+/* REVEAL */
+
+.reveal{
+    opacity:0;
+    transform:translateY(50px);
+    transition:all .8s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#25D366;
+    color:white;
+    text-decoration:none;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
+}
+
 /* FOOTER */
 
 footer{
-    border-top:1px solid rgba(255,255,255,.08);
     text-align:center;
     padding:40px;
+    border-top:1px solid rgba(255,255,255,.08);
     color:#94a3b8;
 }
 
-/* RESPONSIVE */
-
 @media(max-width:900px){
 
-.hero-grid{
-    grid-template-columns:1fr;
-}
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
 
-.hero h1{
-    font-size:2.8rem;
-}
+    .hero h1{
+        font-size:2.7rem;
+    }
 
-.menu{
-    display:none;
-}
-
+    .menu{
+        display:none;
+    }
 }
 
 </style>
 </head>
-
 <body>
 
 <nav>
-    <div class="container navbar">
+<div class="container navbar">
 
-        <div class="logo">
-            DFP Tech FL
-        </div>
+<div class="logo">DFP Tech FL</div>
 
-        <div class="menu">
-            <a href="#inicio">Inicio</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#contacto">Contacto</a>
-        </div>
+<div class="menu">
+<a href="#inicio">Inicio</a>
+<a href="#servicios">Servicios</a>
+<a href="#nosotros">Nosotros</a>
+<a href="#contacto">Contacto</a>
+</div>
 
-    </div>
+</div>
 </nav>
 
 <section class="hero" id="inicio">
@@ -326,31 +400,21 @@ Microsoft 365 • SharePoint • Power Platform
 
 <h1>
 Transformamos su empresa con
-<span class="gradient">
-Tecnología Inteligente
-</span>
+<span class="gradient">Tecnología Inteligente</span>
 </h1>
 
 <p>
-Implementamos Microsoft 365, SharePoint Online, Power Platform y soluciones de seguridad para ayudar a las empresas a ser más productivas, seguras y eficientes.
+Implementamos soluciones Microsoft 365, automatización de procesos, seguridad empresarial y migraciones a la nube para ayudar a su organización a crecer de forma segura y eficiente.
 </p>
 
 <div class="buttons">
-
-<a href="#contacto" class="btn btn-primary">
-Solicitar Consulta
-</a>
-
-<a href="#servicios" class="btn btn-outline">
-Nuestros Servicios
-</a>
-
+<a href="#contacto" class="btn btn-primary">Solicitar Consulta</a>
+<a href="#servicios" class="btn btn-outline">Nuestros Servicios</a>
 </div>
 
 </div>
 
 <div class="hero-card">
-
 <h3>Soluciones Especializadas</h3>
 
 <ul>
@@ -362,7 +426,7 @@ Nuestros Servicios
 <li>Power Apps</li>
 <li>Microsoft Intune</li>
 <li>Entra ID</li>
-<li>Migraciones a la Nube</li>
+<li>Migraciones a la nube</li>
 </ul>
 
 </div>
@@ -371,48 +435,46 @@ Nuestros Servicios
 
 </section>
 
-<section id="servicios">
+<section id="servicios" class="reveal">
 
 <div class="container">
 
-<h2 class="section-title">
-Nuestros Servicios
-</h2>
+<h2 class="section-title">Nuestros Servicios</h2>
 
 <p class="section-subtitle">
-Soluciones tecnológicas modernas para impulsar la productividad empresarial.
+Tecnología moderna para acelerar la productividad de su negocio.
 </p>
 
 <div class="services">
 
-<div class="service-card">
+<div class="card">
 <h3>Microsoft 365</h3>
-<p>Implementación, configuración y administración del entorno Microsoft 365.</p>
+<p>Implementación, configuración y optimización completa.</p>
 </div>
 
-<div class="service-card">
+<div class="card">
 <h3>SharePoint Online</h3>
-<p>Portales corporativos, colaboración y gestión documental.</p>
+<p>Intranets, gestión documental y colaboración empresarial.</p>
 </div>
 
-<div class="service-card">
+<div class="card">
 <h3>Power Platform</h3>
-<p>Automatización de procesos con Power Automate y Power Apps.</p>
+<p>Automatización y aplicaciones de negocio.</p>
 </div>
 
-<div class="service-card">
+<div class="card">
 <h3>Seguridad</h3>
-<p>MFA, Conditional Access, Defender y protección de información.</p>
+<p>MFA, Defender, Entra ID y cumplimiento normativo.</p>
 </div>
 
-<div class="service-card">
+<div class="card">
 <h3>Microsoft Intune</h3>
-<p>Administración moderna de dispositivos y aplicaciones.</p>
+<p>Administración moderna de dispositivos corporativos.</p>
 </div>
 
-<div class="service-card">
+<div class="card">
 <h3>Migraciones</h3>
-<p>Migración desde Google Workspace, Exchange y servidores locales.</p>
+<p>Google Workspace, Exchange y servidores locales.</p>
 </div>
 
 </div>
@@ -421,16 +483,48 @@ Soluciones tecnológicas modernas para impulsar la productividad empresarial.
 
 </section>
 
-<section id="contacto">
+<section id="nosotros" class="reveal">
 
 <div class="container">
 
-<h2 class="section-title">
-Contáctenos
-</h2>
+<h2 class="section-title">¿Por qué elegir DFP Tech FL?</h2>
+
+<div class="stats">
+
+<div class="stat">
+<div class="number" data-target="100">0</div>
+<p>Soluciones Personalizadas</p>
+</div>
+
+<div class="stat">
+<div class="number" data-target="24">0</div>
+<p>Soporte</p>
+</div>
+
+<div class="stat">
+<div class="number" data-target="50">0</div>
+<p>Implementaciones</p>
+</div>
+
+<div class="stat">
+<div class="number" data-target="99">0</div>
+<p>Disponibilidad</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contacto" class="reveal">
+
+<div class="container">
+
+<h2 class="section-title">Contáctenos</h2>
 
 <p class="section-subtitle">
-Estamos listos para ayudarle con su proyecto tecnológico.
+Comencemos su transformación digital.
 </p>
 
 <div class="contact">
@@ -439,27 +533,74 @@ Estamos listos para ayudarle con su proyecto tecnológico.
 
 <input type="text" placeholder="Nombre">
 
-<input type="email" placeholder="Correo electrónico">
+<input type="email" placeholder="Correo Electrónico">
 
 <input type="text" placeholder="Empresa">
 
-<textarea placeholder="Cuéntenos sobre su proyecto"></textarea>
+<textarea placeholder="Describa su proyecto"></textarea>
 
-<button class="btn btn-primary" type="submit">
-Solicitar Consulta
-</button>
+<button type="submit" class="btn btn/
 
-</form>
+const reveals = document.querySelectorAll('.reveal');
 
-</div>
+window.addEventListener('scroll', () => {
+    reveals.forEach(element => {
+        const top = element.getBoundingClientRect().top;
 
-</div>
+        if(top < window.innerHeight - 120){
+            element.classList.add('active');
+        }
+    });
+});
 
-</section>
+/* Counters */
 
-<footer>
-© 2026 DFP Tech FL | Soluciones Microsoft 365 • SharePoint • Power Platform
-</footer>
+const counters = document.querySelectorAll('.number');
+
+const observer = new IntersectionObserver(entries => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+
+const counter = entry.target;
+const target = parseInt(counter.dataset.target);
+
+let current = 0;
+
+const update = () => {
+
+current += Math.ceil(target / 50);
+
+if(current >= target){
+
+counter.innerText =
+target === 99 ? '99.9%' :
+target === 24 ? '24/7' :
+target + '+';
+
+} else {
+
+counter.innerText = current;
+requestAnimationFrame(update);
+
+}
+
+};
+
+update();
+
+observer.unobserve(counter);
+
+}
+
+});
+
+});
+
+counters.forEach(counter => observer.observe(counter));
+
+</script>
 
 </body>
 </html>
