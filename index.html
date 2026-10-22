@@ -807,9 +807,9 @@
       const t = translations[currentLanguage];
 
       // Replace this placeholder with your real business email before publishing.
-      const contactEmail = "REEMPLAZA_CON_TU_CORREO";
+      const contactEmail = "contacto@dfptechfl.com";
 
-      if (contactEmail === "REEMPLAZA_CON_TU_CORREO") {
+      if (!contactEmail || !contactEmail.includes("@")) {
         status.textContent = t.formMissingEmail;
         return;
       }
