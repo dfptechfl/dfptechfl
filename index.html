@@ -4,9 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DFP Tech FL | Soluciones Digitales y Microsoft 365</title>
+<title>DFP Tech FL | Microsoft 365, Diseño Web y Transformación Digital</title>
 
 <meta name="description" content="Microsoft 365, SharePoint, Power Platform, Diseño Web, Seguridad y Transformación Digital.">
+
+<link rel="icon" type="image/png" href="Logo.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,15 +30,15 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     font-family:'Inter',sans-serif;
     background:#060B18;
     color:#fff;
     overflow-x:hidden;
-}
-
-html{
-    scroll-behavior:smooth;
 }
 
 body::before{
@@ -45,8 +47,8 @@ body::before{
     inset:0;
     z-index:-1;
     background:
-    radial-gradient(circle at top left,rgba(0,163,255,.2),transparent 35%),
-    radial-gradient(circle at bottom right,rgba(123,97,255,.2),transparent 40%);
+    radial-gradient(circle at top left,rgba(0,163,255,.18),transparent 35%),
+    radial-gradient(circle at bottom right,rgba(123,97,255,.18),transparent 40%);
 }
 
 .container{
@@ -59,25 +61,29 @@ body::before{
 
 nav{
     position:fixed;
-    width:100%;
     top:0;
+    width:100%;
     z-index:999;
-    backdrop-filter:blur(10px);
     background:rgba(6,11,24,.85);
+    backdrop-filter:blur(12px);
     border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .navbar{
-    height:80px;
+    height:85px;
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
-.logo{
-    font-size:1.8rem;
-    font-weight:800;
-    color:var(--secondary);
+.logo img{
+    height:60px;
+    width:auto;
+    transition:.3s;
+}
+
+.logo img:hover{
+    transform:scale(1.05);
 }
 
 .menu{
@@ -86,8 +92,9 @@ nav{
 }
 
 .menu a{
-    text-decoration:none;
     color:white;
+    text-decoration:none;
+    font-weight:500;
     transition:.3s;
 }
 
@@ -106,7 +113,7 @@ nav{
 .hero-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:50px;
+    gap:60px;
     align-items:center;
 }
 
@@ -114,9 +121,9 @@ nav{
     display:inline-block;
     padding:10px 18px;
     border-radius:999px;
-    background:rgba(0,163,255,.15);
-    color:#82deff;
     border:1px solid rgba(0,163,255,.3);
+    background:rgba(0,163,255,.12);
+    color:#7ee1ff;
     margin-bottom:20px;
 }
 
@@ -126,16 +133,22 @@ nav{
     margin-bottom:20px;
 }
 
-.gradient{
-    background:linear-gradient(90deg,#00A3FF,#00E5FF,#7B61FF);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+.hero p{
+    color:#c6d2e3;
+    line-height:1.8;
+    font-size:1.1rem;
+    margin-bottom:30px;
 }
 
-.hero p{
-    color:#c9d3e1;
-    line-height:1.8;
-    margin-bottom:30px;
+.gradient{
+    background:linear-gradient(
+        90deg,
+        var(--primary),
+        var(--secondary),
+        var(--accent)
+    );
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
 .buttons{
@@ -145,7 +158,7 @@ nav{
 }
 
 .btn{
-    padding:15px 28px;
+    padding:15px 25px;
     border-radius:12px;
     text-decoration:none;
     font-weight:700;
@@ -157,7 +170,7 @@ nav{
 }
 
 .primary{
-    background:linear-gradient(90deg,#00A3FF,#00E5FF);
+    background:linear-gradient(90deg,var(--primary),var(--secondary));
     color:white;
 }
 
@@ -172,6 +185,12 @@ nav{
     border-radius:25px;
     padding:35px;
     border:1px solid rgba(255,255,255,.08);
+    animation:float 6s ease-in-out infinite;
+}
+
+.hero-card h3{
+    color:var(--secondary);
+    margin-bottom:20px;
 }
 
 .hero-card ul{
@@ -183,7 +202,13 @@ nav{
     border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-/* SECCIONES */
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+    100%{transform:translateY(0);}
+}
+
+/* SECTIONS */
 
 section{
     padding:100px 0;
@@ -191,13 +216,13 @@ section{
 
 .section-title{
     text-align:center;
-    font-size:2.7rem;
+    font-size:2.8rem;
     margin-bottom:15px;
 }
 
 .section-subtitle{
     text-align:center;
-    color:#aeb9cc;
+    color:#a9b4c9;
     margin-bottom:60px;
 }
 
@@ -216,19 +241,40 @@ section{
 }
 
 .card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 0 25px rgba(0,163,255,.3);
+    transform:translateY(-10px);
+    box-shadow:0 0 25px rgba(0,163,255,.25);
 }
 
 .card h3{
+    color:var(--secondary);
     margin-bottom:15px;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.stat{
+    text-align:center;
+    padding:30px;
+    border-radius:20px;
+    background:var(--glass);
+}
+
+.number{
+    font-size:3rem;
+    font-weight:800;
     color:var(--secondary);
 }
 
-/* CONTACTO */
+/* CONTACT FORM */
 
 .contact{
-    max-width:700px;
+    max-width:750px;
     margin:auto;
 }
 
@@ -244,14 +290,33 @@ textarea{
 }
 
 textarea{
-    min-height:150px;
+    min-height:160px;
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#25D366;
+    color:white;
+    text-decoration:none;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
 }
 
 /* ANIMACIONES */
 
 .reveal{
     opacity:0;
-    transform:translateY(40px);
+    transform:translateY(50px);
     transition:.8s;
 }
 
@@ -260,13 +325,11 @@ textarea{
     transform:translateY(0);
 }
 
-/* FOOTER */
-
 footer{
     text-align:center;
     padding:40px;
+    color:#8ea0be;
     border-top:1px solid rgba(255,255,255,.08);
-    color:#96a7c4;
 }
 
 @media(max-width:900px){
@@ -276,11 +339,15 @@ footer{
 }
 
 .hero h1{
-    font-size:2.8rem;
+    font-size:2.7rem;
 }
 
 .menu{
     display:none;
+}
+
+.logo img{
+    height:50px;
 }
 
 }
@@ -293,7 +360,11 @@ footer{
 <nav>
 <div class="container navbar">
 
-<div class="logo">DFP Tech FL</div>
+<div class="logo">
+<a href="#inicio">
+<img src="Logo.png" alt="DFP Tech FL">
+</a>
+</div>
 
 <div class="menu">
 <a href="#inicio">Inicio</a>
@@ -317,11 +388,13 @@ Microsoft 365 • Diseño Web • Transformación Digital
 
 <h1>
 Impulsamos su negocio con
-<span class="gradient">soluciones digitales innovadoras</span>
+<span class="gradient">
+soluciones digitales innovadoras
+</span>
 </h1>
 
 <p>
-Especialistas en Microsoft 365, SharePoint, Power Platform, diseño de páginas web, seguridad empresarial y migraciones a la nube.
+Especialistas en Microsoft 365, SharePoint Online, Power Platform, diseño de páginas web, seguridad empresarial y migraciones a la nube.
 </p>
 
 <div class="buttons">
@@ -381,7 +454,7 @@ Tecnología moderna para impulsar la productividad y el crecimiento empresarial.
 
 <div class="card">
 <h3>🌐 Diseño de Páginas Web</h3>
-<p>Desarrollo de sitios modernos, rápidos y responsivos.</p>
+<p>Sitios web modernos, rápidos y completamente responsivos.</p>
 </div>
 
 <div class="card">
@@ -392,6 +465,16 @@ Tecnología moderna para impulsar la productividad y el crecimiento empresarial.
 <div class="card">
 <h3>🔒 Seguridad Empresarial</h3>
 <p>MFA, Defender, Entra ID y protección de datos.</p>
+</div>
+
+<div class="card">
+<h3>💻 Microsoft Intune</h3>
+<p>Administración moderna de dispositivos corporativos.</p>
+</div>
+
+<div class="card">
+<h3>🚀 Migraciones Cloud</h3>
+<p>Migraciones seguras hacia Microsoft 365 y SharePoint Online.</p>
 </div>
 
 </div>
@@ -410,6 +493,30 @@ Tecnología moderna para impulsar la productividad y el crecimiento empresarial.
 Ayudamos a las empresas a adoptar tecnología moderna de forma segura y eficiente.
 </p>
 
+<div class="stats">
+
+<div class="stat">
+<div class="number">100%</div>
+<p>Soluciones Personalizadas</p>
+</div>
+
+<div class="stat">
+<div class="number">24/7</div>
+<p>Soporte</p>
+</div>
+
+<div class="stat">
+<div class="number">50+</div>
+<p>Implementaciones</p>
+</div>
+
+<div class="stat">
+<div class="number">99.9%</div>
+<p>Disponibilidad</p>
+</div>
+
+</div>
+
 </div>
 
 </section>
@@ -419,6 +526,10 @@ Ayudamos a las empresas a adoptar tecnología moderna de forma segura y eficient
 <div class="container">
 
 <h2 class="section-title">Contáctenos</h2>
+
+<p class="section-subtitle">
+Conversemos sobre su próximo proyecto.
+</p>
 
 <div class="contact">
 
@@ -440,8 +551,12 @@ Solicitar Consulta
 </section>
 
 <footer>
-© 2026 DFP Tech FL | Soluciones Digitales y Microsoft 365
+© 2026 DFP Tech FL | Microsoft 365 • Diseño Web • Transformación Digital
 </footer>
+
+<a class="whatsapp" href="https://wa.me/18635551234" target="_blank">
+💬
+</a>
 
 <script>
 
@@ -453,7 +568,7 @@ reveals.forEach(item=>{
 
 const top=item.getBoundingClientRect().top;
 
-if(top < window.innerHeight-120){
+if(top < window.innerHeight - 120){
 item.classList.add('active');
 }
 
