@@ -668,11 +668,13 @@
         formEmailLabel:"Correo electrónico *", formEmailPlaceholder:"nombre@empresa.com",
         formCompanyLabel:"Empresa", formCompanyPlaceholder:"Nombre de su empresa (opcional)",
         formMessageLabel:"¿Cómo podemos ayudarle? *", formMessagePlaceholder:"Describa brevemente su proyecto o necesidad...",
-        formNote:"Al enviar, se preparará un mensaje en su aplicación de correo. Para recibir solicitudes directamente desde la web sin abrir el correo del visitante, deberá conectarse este formulario a un servicio de formularios o a un servidor.",
-        formSubmit:"Preparar correo", footerText:"DFP Tech FL · Microsoft 365 · Diseño Web · Transformación Digital",
+        formNote:"Tu mensaje se enviará a nuestro equipo sin necesidad de abrir una aplicación de correo.",
+        formSubmit:"Enviar", footerText:"DFP Tech FL · Microsoft 365 · Diseño Web · Transformación Digital",
         menuOpen:"Abrir menú", menuClose:"Cerrar menú", navAria:"Navegación principal",
-        formMissingEmail:"El formulario está listo, pero falta configurar el correo receptor en el código antes de publicarlo.",
-        formOpeningEmail:"Abriendo su aplicación de correo...",
+        formMissingEmail:"No se pudo configurar el envío. Inténtalo más tarde.",
+        formSending:"Enviando mensaje...",
+        formSuccess:"¡Gracias! Tu mensaje se envió correctamente. Nos pondremos en contacto contigo pronto.",
+        formError:"No se pudo enviar el mensaje. Inténtalo de nuevo en unos minutos o escríbenos directamente a contacto@dfptechfl.com.",
         mailSubject:"Consulta desde la página web de DFP Tech FL",
         mailName:"Nombre", mailEmail:"Correo", mailCompany:"Empresa", mailNotSpecified:"No indicada",
         mailMessage:"Proyecto o consulta"
@@ -718,11 +720,13 @@
         formEmailLabel:"Email address *", formEmailPlaceholder:"name@company.com",
         formCompanyLabel:"Company", formCompanyPlaceholder:"Your company name (optional)",
         formMessageLabel:"How can we help? *", formMessagePlaceholder:"Briefly describe your project or needs...",
-        formNote:"Submitting this form prepares a message in your email application. To receive requests directly from the website without opening the visitor's email app, connect this form to a form service or server.",
-        formSubmit:"Prepare email", footerText:"DFP Tech FL · Microsoft 365 · Web Design · Digital Transformation",
+        formNote:"Your message will be sent to our team without opening an email application.",
+        formSubmit:"Send", footerText:"DFP Tech FL · Microsoft 365 · Web Design · Digital Transformation",
         menuOpen:"Open menu", menuClose:"Close menu", navAria:"Main navigation",
-        formMissingEmail:"The form is ready, but the recipient email must be configured in the code before publishing.",
-        formOpeningEmail:"Opening your email application...",
+        formMissingEmail:"Message delivery is not configured. Please try again later.",
+        formSending:"Sending your message...",
+        formSuccess:"Thank you! Your message was sent successfully. We will get back to you soon.",
+        formError:"We could not send your message. Please try again in a few minutes or email contacto@dfptechfl.com directly.",
         mailSubject:"Inquiry from the DFP Tech FL website",
         mailName:"Name", mailEmail:"Email", mailCompany:"Company", mailNotSpecified:"Not provided",
         mailMessage:"Project or inquiry"
@@ -796,33 +800,57 @@
 
     document.querySelector("#current-year").textContent = new Date().getFullYear();
 
-    document.querySelector("#contact-form").addEventListener("submit", (event) => {
+    document.querySelector("#contact-form").addEventListener("submit", async (event) => {
       event.preventDefault();
-      const formData = new FormData(event.currentTarget);
-      const name = String(formData.get("name") || "").trim();
-      const email = String(formData.get("email") || "").trim();
-      const company = String(formData.get("company") || "").trim();
-      const message = String(formData.get("message") || "").trim();
+
+      const form = event.currentTarget;
+      const formData = new FormData(form);
       const status = document.querySelector("#form-status");
+      const submitButton = form.querySelector('button[type="submit"]');
+      const submitLabel = submitButton.querySelector("[data-i18n='formSubmit']");
       const t = translations[currentLanguage];
 
-      // Replace this placeholder with your real business email before publishing.
-      const contactEmail = "contacto@dfptechfl.com";
+      // Sends directly through FormSubmit; no email app opens.
+      // The first submission requires confirming contacto@dfptechfl.com via the activation email.
+      const endpoint = "https://formsubmit.co/ajax/contacto@dfptechfl.com";
+      const payload = {
+        name: String(formData.get("name") || "").trim(),
+        email: String(formData.get("email") || "").trim(),
+        company: String(formData.get("company") || "").trim(),
+        message: String(formData.get("message") || "").trim(),
+        _subject: t.mailSubject,
+        _template: "table"
+      };
 
-      if (!contactEmail || !contactEmail.includes("@")) {
-        status.textContent = t.formMissingEmail;
-        return;
+      status.textContent = t.formSending;
+      submitButton.disabled = true;
+      submitButton.setAttribute("aria-busy", "true");
+
+      try {
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+        if (!response.ok || result.success === false || result.success === "false") {
+          throw new Error(result.message || "Form submission failed");
+        }
+
+        status.textContent = t.formSuccess;
+        form.reset();
+      } catch (error) {
+        console.error("Contact form submission failed:", error);
+        status.textContent = t.formError;
+      } finally {
+        submitButton.disabled = false;
+        submitButton.removeAttribute("aria-busy");
+        if (submitLabel) submitLabel.textContent = translations[currentLanguage].formSubmit;
       }
-
-      const subject = encodeURIComponent(t.mailSubject);
-      const body = encodeURIComponent(
-        t.mailName + ": " + name + "\n" +
-        t.mailEmail + ": " + email + "\n" +
-        t.mailCompany + ": " + (company || t.mailNotSpecified) + "\n\n" +
-        t.mailMessage + ":\n" + message
-      );
-      status.textContent = t.formOpeningEmail;
-      window.location.href = "mailto:" + contactEmail + "?subject=" + subject + "&body=" + body;
     });
 
     // Spanish is the default language on every fresh page load.
